@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
+import Header from '../Components/Header';
 import ProfileEdit from './ProfileEdit';
 
 class Profile extends React.Component {
@@ -9,7 +10,7 @@ class Profile extends React.Component {
         <BrowserRouter>
           <Route path="/profile/edit" component={ ProfileEdit } />
         </BrowserRouter>
-        <h2>Profile</h2>
+        <Header />
       </div>
     );
   }
