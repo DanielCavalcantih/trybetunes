@@ -18,16 +18,8 @@ class Album extends React.Component {
 
     const response = await getMusics(id);
 
-    // const musics = response.filter((res) => res.wrapperType === 'track');
-    // const album = response.find((res) => res.wrapperType === 'collection').collectionName;
-    // const image = response.find((res) => res.wrapperType === 'collection').artworkUrl100;
-    // const artist = response.find((res) => res.wrapperType === 'collection').artistName;
-
     this.setState({
       allMusics: response,
-      // albumName: album,
-      // albumImageUrl: image,
-      // artistName: artist,
     });
   }
 
@@ -54,6 +46,7 @@ class Album extends React.Component {
             musicId={ music.trackId }
             musicName={ music.trackName }
             audio={ music.previewUrl }
+            favorite={ false }
           />
         ))}
       </div>
