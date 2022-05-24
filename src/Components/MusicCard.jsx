@@ -14,7 +14,7 @@ class MusicCard extends React.Component {
   }
 
   getAddSong = async () => {
-    const { music } = this.props;
+    const { music, removeTrackFunc } = this.props;
     const { inputCheck } = this.state;
 
     if (!inputCheck) {
@@ -36,6 +36,8 @@ class MusicCard extends React.Component {
 
       await removeSong(music);
 
+      if (removeTrackFunc) removeTrackFunc();
+
       this.setState({ loading: false });
     }
   };
@@ -44,7 +46,6 @@ class MusicCard extends React.Component {
     const { music } = this.props;
 
     const favorites = await getFavoriteSongs();
-    console.log(favorites);
 
     favorites.forEach((favorite) => {
       if (favorite.trackId === music.trackId) this.setState({ inputCheck: true });
@@ -85,6 +86,7 @@ MusicCard.propTypes = {
   audio: PropTypes.string.isRequired,
   musicId: PropTypes.number.isRequired,
   music: PropTypes.shape().isRequired,
+  removeTrackFunc: PropTypes.func.isRequired,
 };
 
 export default MusicCard;

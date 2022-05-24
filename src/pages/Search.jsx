@@ -51,7 +51,8 @@ class Search extends React.Component {
       loading,
       searchSaved,
       buttonActive,
-      albums } = this.state;
+      albums,
+    } = this.state;
 
     if (!loading) {
       return (

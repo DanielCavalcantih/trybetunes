@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Header from '../Components/Header';
 import getMusics from '../services/musicsAPI';
 import MusicCard from '../Components/MusicCard';
+import '../styles/login.css';
 
 class Album extends React.Component {
   state = {
@@ -46,7 +47,6 @@ class Album extends React.Component {
             musicId={ music.trackId }
             musicName={ music.trackName }
             audio={ music.previewUrl }
-            favorite={ false }
           />
         ))}
       </div>
