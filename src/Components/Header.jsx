@@ -9,9 +9,15 @@ class Header extends React.Component {
     user: [],
   }
 
-  async componentDidMount() {
+  componentDidMount() {
+    this.callGetUser();
+  }
+
+  callGetUser = async () => {
+    const user = await getUser();
+
     this.setState({
-      user: await getUser(),
+      user,
     });
     this.setState({
       ready: true,
