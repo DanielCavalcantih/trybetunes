@@ -7,8 +7,6 @@ class Login extends React.Component {
   state = {
     nome: '',
     userEmail: '',
-    userImage: '',
-    userDescription: '',
     loading: false,
     buttonDisabled: true,
     userCreated: false,
@@ -30,12 +28,12 @@ class Login extends React.Component {
   }
 
   getCreatUser = async () => {
-    const { nome, userEmail, userImage, userDescription } = this.state;
+    const { nome, userEmail } = this.state;
     this.setState({
       loading: true,
     });
     await createUser({
-      name: nome, email: userEmail, image: userImage, description: userDescription });
+      name: nome, email: userEmail });
     this.setState({
       userCreated: true,
     });
@@ -44,7 +42,7 @@ class Login extends React.Component {
   render() {
     const {
       buttonDisabled,
-      nome, userEmail, userImage, loading, userCreated, userDescription } = this.state;
+      nome, userEmail, loading, userCreated } = this.state;
 
     if (!loading) {
       return (
@@ -71,26 +69,6 @@ class Login extends React.Component {
                   value={ userEmail }
                   onChange={ this.handleChange }
                   placeholder="Email"
-                />
-              </label>
-              <label htmlFor="userImage">
-                Image :
-                <input
-                  id="userImage"
-                  type="text"
-                  value={ userImage }
-                  onChange={ this.handleChange }
-                  placeholder="Profile image url"
-                />
-              </label>
-              <label htmlFor="userDescription">
-                Description :
-                <input
-                  id="userDescription"
-                  type="text"
-                  value={ userDescription }
-                  onChange={ this.handleChange }
-                  placeholder="Description"
                 />
               </label>
               <button

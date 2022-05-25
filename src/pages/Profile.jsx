@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { getUser } from '../services/userAPI';
 import Loading from '../Components/Loading';
+import Header from '../Components/Header';
 
 class Profile extends React.Component {
   state = {
@@ -23,11 +24,10 @@ class Profile extends React.Component {
 
     return (
       <div data-testid="page-profile">
+        <Header />
         {loading ? <Loading /> : (
           <div>
-            {/* <Header /> */}
             <div>
-              <h1>{ name }</h1>
               {(image === '') ? (
                 <img data-testid="profile-image" src="https://api-private.atlassian.com/users/88ece68c279a6595ebfe97d374b17234/avatar" alt="" />
               ) : <img data-testid="profile-image" src={ image } alt="" />}
