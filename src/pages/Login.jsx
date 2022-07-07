@@ -2,6 +2,7 @@ import React from 'react';
 import { Redirect } from 'react-router-dom';
 import { createUser } from '../services/userAPI';
 import Loading from '../Components/Loading';
+import '../styles/login.css';
 
 class Login extends React.Component {
   state = {
@@ -47,7 +48,10 @@ class Login extends React.Component {
     if (!loading) {
       return (
         <div data-testid="page-login" className="container">
-          <h2 className="title">TrybeTunes</h2>
+          <header className="header-login">
+            <h2 className="title">TrybeTunes</h2>
+            <img className="imgLogin" src="https://cdn.shopify.com/s/files/1/0420/2505/files/9cpXLLzcE.gif?16178194085850646021" alt="" />
+          </header>
           <form className="form">
             <div className="div-form">
               <label htmlFor="user">

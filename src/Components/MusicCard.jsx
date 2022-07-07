@@ -1,7 +1,9 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { addSong, getFavoriteSongs, removeSong } from '../services/favoriteSongsAPI';
 import Loading from './Loading';
+import '../styles/music-card.css';
 
 class MusicCard extends React.Component {
   state = {
@@ -53,30 +55,37 @@ class MusicCard extends React.Component {
   }
 
   render() {
-    const { musicName, audio, musicId } = this.props;
+    const { musicName, audio, musicId, imgMusic, albumName, albumId } = this.props;
     const { loading, inputCheck } = this.state;
 
-    if (loading) {
-      return <Loading />;
-    }
-
     return (
-      <>
-        <p>{ musicName }</p>
-        <audio data-testid="audio-component" src={ audio } controls>
-          <track kind="captions" />
-        </audio>
-        <label htmlFor="inputFavorite">
-          Favorita
-          <input
-            type="checkbox"
-            id="inputFavorite"
-            checked={ inputCheck }
-            data-testid={ `checkbox-music-${musicId}` }
-            onChange={ this.getAddSong }
-          />
-        </label>
-      </>
+      <div className="container-musics">
+        {loading ? <Loading /> : (
+          <div className="card-music">
+            <img className="imgMusic" src={ imgMusic } alt="" />
+            <div>
+              <p className="music-name">{ musicName }</p>
+              <Link className="link-to-album" to={ `/album/${albumId}` }>
+                <p className="album-name">{ albumName }</p>
+              </Link>
+            </div>
+            <audio data-testid="audio-component" src={ audio } controls>
+              <track kind="captions" />
+            </audio>
+            <label htmlFor="inputFavorite">
+              Favorita
+              <input
+                className="check"
+                type="checkbox"
+                id="inputFavorite"
+                checked={ inputCheck }
+                data-testid={ `checkbox-music-${musicId}` }
+                onChange={ this.getAddSong }
+              />
+            </label>
+          </div>
+        )}
+      </div>
     );
   }
 }
@@ -86,7 +95,10 @@ MusicCard.propTypes = {
   audio: PropTypes.string.isRequired,
   musicId: PropTypes.number.isRequired,
   music: PropTypes.shape().isRequired,
+  imgMusic: PropTypes.string.isRequired,
   removeTrackFunc: PropTypes.func.isRequired,
+  albumName: PropTypes.string.isRequired,
+  albumId: PropTypes.number.isRequired,
 };
 
 export default MusicCard;

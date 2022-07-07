@@ -1,0 +1,41 @@
+.container-profile {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.profile {
+  background-color: rgb(56, 0, 56);
+  width: 30%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px;
+  border-radius: 20px;
+}
+
+.imgDefault {
+  width: 150px;
+  margin-bottom: 30px;
+  border-radius: 100%;
+}
+
+.input-info {
+  border: solid 2px orange;
+  padding: 5px;
+  border-radius: 20px;
+}
+
+.link-edit {
+  background-color: orange;
+  padding: 10px;
+  font-size: 18px;
+  border-radius: 20px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 400ms;
+}
+
+.link-edit:hover {
+  background-color: rgb(255, 192, 75);
+}

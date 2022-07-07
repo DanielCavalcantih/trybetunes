@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Header from '../Components/Header';
 import getMusics from '../services/musicsAPI';
 import MusicCard from '../Components/MusicCard';
-import '../styles/login.css';
+import '../styles/album.css';
 
 class Album extends React.Component {
   state = {
@@ -31,24 +31,27 @@ class Album extends React.Component {
 
     return (
       <div data-testid="page-album">
-        <Header />
-        <img src={ allMusics[0] } alt="" />
-        {allMusics.length
-        && (
-          <div>
-            <p data-testid="artist-name">{ allMusics[0].artistName }</p>
-            <h3 data-testid="album-name">{ allMusics[0].collectionName }</h3>
-          </div>)}
-        {musics.length
-        && musics.map((music) => (
-          <MusicCard
-            music={ music }
-            key={ music.trackId }
-            musicId={ music.trackId }
-            musicName={ music.trackName }
-            audio={ music.previewUrl }
-          />
-        ))}
+        <Header page="Albums" />
+        <div className="container-album">
+          {allMusics.length
+          && (
+            <div className="title-album">
+              <h2 data-testid="artist-name">{ allMusics[0].artistName }</h2>
+              <h3 data-testid="album-name">{ allMusics[0].collectionName }</h3>
+            </div>)}
+          {musics.length
+          && musics.map((music) => (
+            <MusicCard
+              albumId={ music.collectionId }
+              imgMusic={ music.artworkUrl100 }
+              music={ music }
+              key={ music.trackId }
+              musicId={ music.trackId }
+              musicName={ music.trackName }
+              audio={ music.previewUrl }
+            />
+          ))}
+        </div>
       </div>
     );
   }
