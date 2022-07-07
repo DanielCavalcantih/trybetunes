@@ -43,7 +43,11 @@ class Login extends React.Component {
   render() {
     const {
       buttonDisabled,
-      nome, userEmail, loading, userCreated } = this.state;
+      nome,
+      userEmail,
+      loading,
+      userCreated,
+    } = this.state;
 
     if (!loading) {
       return (

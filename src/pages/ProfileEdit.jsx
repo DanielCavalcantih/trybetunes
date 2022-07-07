@@ -71,7 +71,8 @@ class ProfileEdit extends React.Component {
       email,
       descricao,
       urlImg,
-      buttonDisabled } = this.state;
+      buttonDisabled,
+    } = this.state;
 
     return (
       <div data-testid="page-profile-edit">
